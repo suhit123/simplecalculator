@@ -18,8 +18,24 @@ function backspace(){
         document.getElementById('input_box').value=a.slice(0,a.length-1);
     }
 }
+function history(p,q){
+    if(p!=q){
+    const heading=document.createElement('h1');
+    const element=document.createTextNode(p+" = "+q);
+    heading.appendChild(element);
+    document.getElementById("history_data").appendChild(heading);
+    }
+}
+const container = document.getElementById("history_data");
+
+const btn = document.getElementById('btn');
+
+btn.addEventListener('click', function handleClick() {
+  container.replaceChildren();
+});
 function answer(){
     var p = document.getElementById("input_box").value;
     var q = eval(p);
+    history(p,q);
     document.getElementById("input_box").value = q;
 }
